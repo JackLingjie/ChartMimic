@@ -35,7 +35,7 @@ class Code4Evaluation(BaseTask):
         self.agent_config = agent_config
         self.llm_config = llm_config
         self.results_file = self.run_config["generated_dataset_dir"] + "_code4evaluation.json"
-        print(self.results_file)
+        print(f"result file: {self.results_file}")
         # self.results_file = os.path.join(
             # self.run_config["result_dir"],
             # "{}_{}_{}_results.json".format(
@@ -67,8 +67,8 @@ class Code4Evaluation(BaseTask):
             self.run_config["generated_dataset_dir"],
             self.run_config["template_type"],
         )
-        print("Length of dataset: ", len(self.dataset))
         processes = []
+        print(f"len dataset: {len(self.dataset)}")
         for rank in range(self.run_config["num_processes"]):
             p = Process(target=self._muti_process_run, args=(rank,))
             p.start()
@@ -79,7 +79,7 @@ class Code4Evaluation(BaseTask):
         # Debug use
         # for rank in range(self.run_config["num_processes"]):
             # self._muti_process_run(rank)
-
+        print("self.results_file", self.results_file)
         total = pd.DataFrame()
         for rank in range(self.run_config["num_processes"]):
             total = pd.concat(
@@ -98,7 +98,7 @@ class Code4Evaluation(BaseTask):
         grid_evaluator = GridEvaluator()
         color_evaluator = ColorEvaluator()
         layout_evaluator = LayoutEvaluator()
-
+        
         for i in tqdm(range(len(sub_index)), disable=rank != 0):
             original_py_file = self.dataset[sub_index[i]]["file"]
             generated_py_file = original_py_file.replace(

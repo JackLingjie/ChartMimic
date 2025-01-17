@@ -4,8 +4,8 @@ load_dotenv()
 
 import os
 import sys
-sys.path.insert(0, os.environ["PROJECT_PATH"])
-
+# sys.path.insert(0, os.environ["PROJECT_PATH"])
+sys.path.insert(0, ".")
 import matplotlib.pyplot as plt
 import eval_configs.global_config as gloabl_config
 

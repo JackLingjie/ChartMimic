@@ -1,5 +1,6 @@
+export PROJECT_PATH=.
 models=(
-  "gpt-4-vision-preview"
+  "gpt-4o"
 )
 
 template_type=direct;agent_type=DirectAgent

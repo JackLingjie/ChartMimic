@@ -49,11 +49,18 @@ class Chart2CodeDataset:
         #         new_raw.append(_)
         # self.raw_data = new_raw
 
-    def __getitem__(self, idx):
-        return {
-            "file": self.raw_data[idx],
-        }
-
+    # def __getitem__(self, idx):
+    #     return {
+    #         "file": self.raw_data[idx],
+    #     }
+    def __getitem__(self, idx):  
+        if isinstance(idx, slice):  
+            return [{"file": self.raw_data[i]} for i in range(*idx.indices(len(self.raw_data)))]  
+        elif isinstance(idx, int):  
+            return {"file": self.raw_data[idx]}  
+        else:  
+            raise TypeError(f"Invalid argument type: {type(idx)}")
+        
     def _encode_base_image(self, file):
         with open(file, "rb") as image_file:
             return base64.b64encode(image_file.read()).decode("utf-8")
@@ -119,8 +126,22 @@ class GPT4EvaluationDataset:
         )
 
     def _load_data(self, original_dataset_dir, generated_dataset_dir):
+        # print(f"original_dataset_dir: {original_dataset_dir} generated_dataset_dir: {generated_dataset_dir}")
         # raw data default to be pdf
         self.raw_data = self._get_all_files(original_dataset_dir, ".pdf")
+
+        new_raw_data = []
+        raw_data = self.raw_data
+        for data in raw_data:
+            generated_pdf_file = data.replace(
+                original_dataset_dir, f"{generated_dataset_dir}"
+            )
+            if os.path.exists(generated_pdf_file):
+                new_raw_data.append(data)
+                # print("Generated file not found: ", generated_py_file)
+                # raise FileNotFoundError
+        self.raw_data = new_raw_data
+        
         # check all the raw data files have corresponding png files
         for data in self.raw_data:
             if not os.path.exists(data.replace(".pdf", ".png")):
@@ -141,8 +162,12 @@ class GPT4EvaluationDataset:
                     self._convert_single_page_pdf_to_png(
                         generated_pdf_file, generated_pdf_file.replace(".pdf", ".png")
                     )
+        # NOTE(debug)
         new_raw = []
+        #() debug
+        # raw_data = raw_data[:5]
         for _ in tqdm(range(len(self.raw_data))):
+        # for _ in tqdm(range(len(self.raw_data[:5]))):
             if not self._is_png_white(
                 self.raw_data[_]
                 .replace(original_dataset_dir, f"{generated_dataset_dir}")
@@ -178,9 +203,21 @@ class GPT4EvaluationDataset:
                     selected_files.append(root + "/" + file)
         return selected_files
 
-    def _convert_single_page_pdf_to_png(self, pdf_path, output_path, dpi=350):
-        images = convert_from_path(pdf_path, dpi=dpi)
-        images[0].save(output_path, "PNG")
+    def _convert_single_page_pdf_to_png(self, pdf_path, output_path, dpi=350):  
+        try:  
+            # 尝试从 PDF 转换为 PNG  
+            images = convert_from_path(pdf_path, dpi=dpi)  
+            images[0].save(output_path, "PNG")  
+        except Exception as e:  
+            print(f"Error converting {pdf_path} to PNG: {e}")  
+            # 如果转换失败，生成一张纯白的图片  
+            self._create_blank_image(output_path)  
+  
+    def _create_blank_image(self, output_path, width=800, height=600):  
+        # 创建一个纯白色的图像  
+        blank_image = Image.new("RGB", (width, height), "white")  
+        blank_image.save(output_path, "PNG")  
+        print(f"Generated a blank image at {output_path}") 
 
     def __getitem__(self, idx):
         return {

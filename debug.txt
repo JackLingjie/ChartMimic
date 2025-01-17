@@ -1,0 +1,172 @@
+  
+Please modify the following code according to these requirements:  
+1. Retain only the plotting code and necessary imports; keep only matplotlib and numpy-related libraries. Do not use os, sys, or similar libraries.  
+2. Avoid using custom functions or classes. Provide sequential code for plotting. If the original code is too complex or lacks plotting code, provide a new example using matplotlib.  
+3. Set the figure size to `figsize=(width, height)`.  
+4. Convert all text to English; do not add font settings.  
+5. If multiple plots exist, retain only one.  
+6. Use `plt.show()` to display the plot.  
+7. Remove non-English text, path information, and initial comments from the code. Ensure the output format matches the example.  
+8. Classify the resulting plot into one of the following categories: Bar, Line, ErrorBar, Heatmap, Box, Scatters, Hist, Radar, 3D, Pie, ErrorPoint, Violin, Area, Contour, Density, Graph, Quiver, Treemap, Combination, HR, Multidiff, PIP.  
+9. Output the image dimensions as `(width, height)`.   
+  
+Please follow the reference code format for modification:  
+
+## Code needs to be revised:
+
+# --------------
+# import packages
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+import warnings
+warnings.filterwarnings("ignore")
+
+df = pd.read_csv(path,sep ="\t")
+print(df['date'].dtype)
+
+df['date']= pd.to_datetime(df['date']) 
+print(df['date'].dtype)
+
+df['lenght'] = df['verified_reviews'].apply(lambda x: len(x))
+
+
+# --------------
+sns.countplot(x = 'rating', hue = 'feedback' , data = df)
+plt.show()
+sns.barplot(x = 'rating',y = 'variation' ,hue = 'feedback' , data = df)
+plt.show()
+
+
+
+# --------------
+# import packages
+import re
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem.porter import PorterStemmer
+
+corpus = []
+
+# import packages
+import re
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem.porter import PorterStemmer
+
+# declare empty list 'corpus'
+corpus=[]
+
+# for loop to fill in corpus
+for i in range(0,3150):
+    review = re.sub('[^a-zA-Z]', ' ', df['verified_reviews'][i] )
+    review=review.lower()
+    review=review.split()
+    ps=PorterStemmer()
+    review=[ps.stem(word) for word in review if not word in set(stopwords.words('english'))]
+    review=' '.join(review)
+    corpus.append(review)
+
+
+# --------------
+# import libraries
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.model_selection import train_test_split
+
+cv = CountVectorizer(max_features=1500)
+
+X = cv.fit_transform(corpus).toarray()
+
+y = df['feedback']
+
+count = y.value_counts()
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = 0.2,random_state = 0)
+
+
+# --------------
+# import packages
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, precision_score, recall_score, confusion_matrix, f1_score
+
+rf = RandomForestClassifier(random_state=2)
+
+rf.fit(X_train,y_train)
+
+y_pred = rf.predict(X_test)
+
+score = accuracy_score(y_test,y_pred)
+
+precision = precision_score(y_test,y_pred)
+
+print(score)
+print(precision)
+
+
+# --------------
+# import packages
+from imblearn.over_sampling import SMOTE
+
+# Instantiate smote
+smote = SMOTE(random_state=9)
+
+# fit_sample onm training data
+X_train, y_train = smote.fit_sample(X_train, y_train)
+
+# fit modelk on training data
+rf.fit(X_train, y_train)
+
+# predict on test data
+y_pred = rf.predict(X_test)
+
+# calculate the accuracy score
+score = accuracy_score(y_test, y_pred)
+
+# calculate the precision
+precision = precision_score(y_test, y_pred)
+
+# display precision and score
+print(score, precision)  
+  
+## Reference output format:  
+  
+<REVISED CODE BEGIN>  
+import matplotlib.pyplot as plt  
+from mpl_toolkits.mplot3d import Axes3D  
+import numpy as np  
+  
+# Sample data  
+targets = np.array([  
+    [0.2, 0.4, 0.0],  
+    [0.3, 0.5, 0.2],  
+    [0.4, 0.6, 0.4],  
+    [0.5, 0.7, 0.6],  
+    [0.6, 0.8, 0.8],  
+    [0.7, 0.9, 1.0],  
+    [0.8, 1.0, 1.2],  
+    [0.9, 1.1, 1.4]  
+])  
+  
+# Create a new figure  
+fig = plt.figure(figsize=(7.0, 7.0))  
+ax = fig.add_subplot(111, projection='3d')  
+  
+# Plot the targets  
+ax.plot(targets[:, 0], targets[:, 1], targets[:, 2], 'o-', color='orange', label='Targets')  
+  
+# Set labels  
+ax.set_xlabel('X')  
+ax.set_ylabel('Y')  
+ax.set_zlabel('Z')  
+  
+# Add a legend  
+ax.legend()  
+  
+# Show the plot  
+plt.show()  
+<REVISED CODE END>  
+  
+<CATEGORY>: [Line]  
+<CHART SIZE>: (7.0, 7.0)  

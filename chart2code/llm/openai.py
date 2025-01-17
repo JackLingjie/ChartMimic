@@ -3,13 +3,13 @@ import os
 import time
 from common.registry import registry
 import base64
-
+from models.gpt4o import Openai, API_INFOS
 
 @registry.register_llm("gpt")
 class OPENAI_GPT:
     def __init__(
         self,
-        engine="gpt-4-vision-preview",
+        engine="gpt-4o",
         temperature=0.1,
         max_tokens=4096,
         top_p=0.95,
@@ -28,9 +28,12 @@ class OPENAI_GPT:
         self.max_retry_iters = max_retry_iters
         self.context_length = context_length
         self.system_message = system_message
-        self.client = OpenAI(
-            base_url=os.environ["OPENAI_BASE_URL"], api_key=os.environ["OPENAI_API_KEY"]
-        )
+        # self.client = OpenAI(
+        #     base_url=os.environ["OPENAI_BASE_URL"], api_key=os.environ["OPENAI_API_KEY"]
+        # )
+        self.client = Openai(
+            apis=[API_INFOS[0]]
+        ).client
 
     def generate(self, conversation):
         conversation = self._convert_conversation(conversation)
@@ -82,7 +85,7 @@ class OPENAI_GPT:
 
     @classmethod
     def from_config(cls, config):
-        engine = config.get("engine", "gpt-35-turbo")
+        engine = config.get("engine", "gpt-4o")
         temperature = config.get("temperature", 0)
         max_tokens = config.get("max_tokens", 100)
         system_message = config.get("system_message", "")

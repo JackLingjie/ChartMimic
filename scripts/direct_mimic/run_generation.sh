@@ -1,4 +1,4 @@
-model=gpt-4-vision-preview
+model=gpt-4o
 
 python chart2code/main.py \
 --cfg_path eval_configs/direct_generation.yaml \

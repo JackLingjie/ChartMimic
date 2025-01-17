@@ -54,6 +54,8 @@ def _muti_process_run(rank, data, num_processes):
             except:
                 code = ""
         else:
+            # print(f"index {i}")
+            # code = data["response"]
             code = data["response"][i] if data["response"][i] else ""
         
         

@@ -33,7 +33,7 @@ class GPT4Evaluation(BaseTask):
             self.run_config["result_dir"],
             "{}_{}_{}_{}_results.json".format(
                 self.run_config["name"],
-                self.llm_config["engine"],
+                self.llm_config["test_model"],
                 self.agent_config["name"],
                 self.run_config["generated_dataset_dir"].split("/")[-1],
             ),
@@ -52,16 +52,20 @@ class GPT4Evaluation(BaseTask):
     def run(
         self,
     ):
+        # print(f"run_config: {self.run_config}")
         self.dataset = self._load_dataset(
             self.run_config["name"],
             self.run_config["original_dataset_dir"],
             self.run_config["generated_dataset_dir"],
         )
+        # print(f"len dataset: {len(self.dataset)}")
         # import pdb
 
         # pdb.set_trace()
+        # print(f"results_file: {self.results_file}")
         if os.path.exists(self.results_file):
             data = pd.read_json(self.results_file, lines=True)
+            # print(f"len data: {len(data)}")
             raw = []
             for _ in self.dataset.raw_data:
                 if _ in list(data["orginial"]):
@@ -93,10 +97,13 @@ class GPT4Evaluation(BaseTask):
         total.to_json(self.results_file, orient="records", lines=True)
 
     def _muti_process_run(self, rank):
+        # print(f"len dataset: {len(self.dataset)}")
+        # print("agent_config: ", self.agent_config)
         sub_index = [_ for _ in range(len(self.dataset))][
             rank :: self.run_config["num_processes"]
         ]
         llm = load_llm(self.llm_config["name"], self.llm_config)
+        # llm = load_llm(self.llm_config["name"], self.llm_config)
         agent = load_agent(self.agent_config["name"], self.agent_config, llm)
         for i in tqdm(range(len(sub_index)), disable=rank != 0):
             originial_png_file = self.dataset[sub_index[i]]["file"].replace(
@@ -106,6 +113,7 @@ class GPT4Evaluation(BaseTask):
                 self.run_config["original_dataset_dir"],
                 self.run_config["generated_dataset_dir"],
             )
+            print(f"originial_png_file: {originial_png_file} generated_png_file: {generated_png_file}")
             response = agent.run(originial_png_file, generated_png_file)
             with open(self.results_file + str(rank), "a", encoding="utf-8") as f:
                 json_str = json.dumps(
@@ -124,7 +132,7 @@ class GPT4Evaluation(BaseTask):
         llm_config,
         agent_config,
     ):
-        llm_config["name"] = llm_config.get("name", "gpt")
+        llm_config["name"] = llm_config.get("name", "gpt4o")
         agent_config["name"] = agent_config.get("name", "vanilla")
 
         return cls(

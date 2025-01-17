@@ -1,0 +1,2 @@
+model_agent,example_count,ExecRate,TextScore,LayoutScore,TypeScore,ColorScore,Average,GPT4VScore,Overall
+gpt-4o_DirectAgent,472,94400000.0,83.48965136542,91.93523809524,78.75319283414,71.76128540684,81.48484192541,80.666,81.075420962705

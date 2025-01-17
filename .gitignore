@@ -3,7 +3,7 @@ __pycache__
 .env
 .ipynb_checkpoints
 trash
-*results
+# *results
 *.ipynb
 *.png
 *.bak
@@ -18,3 +18,9 @@ dataset/ori_without_text/
 !scripts/direct_mimic/get_results.ipynb
 dataset
 .history
+test.tar.gz
+results/direct/**  
+!results/direct/**/*.json 
+ourdata_revise/
+*.json[0-9]*  
+*.zip

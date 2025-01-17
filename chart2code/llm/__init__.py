@@ -1,8 +1,9 @@
 from .openai import OPENAI_GPT
 from .gemini import GEMINI
-from .deepseekvl import DeepSeekVL
+# from .deepseekvl import DeepSeekVL
 from .qwenvl import QwenVL
-from .internvl import InternVL
+from .qwen2vl import Qwen2VL
+# from .internvl import InternVL
 from .idefics2 import Idefics2
 from .llava import Llava
 from .cogvlm2 import Cogvlm2
@@ -10,6 +11,7 @@ from .phi3 import Phi3
 from .minicpm import Minicpm
 from .claude import Claude
 from common.registry import registry
+from .openaimini import OPENAI_GPT_MINI
 
 __all__ = [
     "OPENAI_GPT",
@@ -23,6 +25,8 @@ __all__ = [
     "Phi3",
     "Minicpm",
     "Claude",
+    "Qwen2VL",
+    "OPENAI_GPT_MINI"
 ]
 
 

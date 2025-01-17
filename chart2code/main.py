@@ -28,7 +28,7 @@ def parse_args():
         "--tasks", required=True, type=str, nargs="+", help="specify the tasks"
     )
     parser.add_argument(
-        "--model", default="gpt-4-vision-preview", type=str, help="specify the model"
+        "--model", default="gpt-4o", type=str, help="specify the model"
     )
     parser.add_argument(
         "--evaluation_dir", type=str, help="specify the evaluation file"
@@ -85,7 +85,13 @@ def main():
 
     args = parse_args()
     llm_config, agent_config, run_config = load_config(args.cfg_path, args)
-    llm_config = llm_config[args.model]
+    print(f"llm_config: {llm_config}")
+    print(f"agent_config: {agent_config}")
+    print(f"run_config: {run_config}")
+    if args.model not in llm_config:
+        llm_config = llm_config["qwen2vl"]
+    else:
+        llm_config = llm_config[args.model]
     llm_config["model"] = args.model
 
     # ------------------------------------------------- start evaluation -------------------------------------------

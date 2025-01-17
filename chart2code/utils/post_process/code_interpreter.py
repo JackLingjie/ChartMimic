@@ -56,7 +56,12 @@ def _muti_process_run(rank, data):
             except Exception as e:
                 code = ""
         else:
+            # with open("debug.txt", "w") as f:
+                # f.write(str(data["response"]))
             code = data["response"][i] if data["response"][i] else ""
+            # print(f"index {i}")
+            # print(f"data key {data.keys()}")
+            # code = data["response"]
         
         if "idefics2" in input_file:
             if "```python" in code:
