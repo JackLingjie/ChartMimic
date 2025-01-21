@@ -4,7 +4,7 @@ __pycache__
 .ipynb_checkpoints
 trash
 # *results
-*.ipynb
+# *.ipynb
 *.png
 *.bak
 dataset/ori_dots
@@ -24,3 +24,4 @@ results/direct/**
 ourdata_revise/
 *.json[0-9]*  
 *.zip
+ourdata_revise_empty/

@@ -31,7 +31,39 @@ Please follow the reference output format for modification:
 ## Reference output format:  
   
 <REVISED CODE BEGIN>  
-
+import matplotlib.pyplot as plt  
+from mpl_toolkits.mplot3d import Axes3D  
+import numpy as np  
+  
+# Sample data  
+targets = np.array([  
+    [0.2, 0.4, 0.0],  
+    [0.3, 0.5, 0.2],  
+    [0.4, 0.6, 0.4],  
+    [0.5, 0.7, 0.6],  
+    [0.6, 0.8, 0.8],  
+    [0.7, 0.9, 1.0],  
+    [0.8, 1.0, 1.2],  
+    [0.9, 1.1, 1.4]  
+])  
+  
+# Create a new figure  
+fig = plt.figure(figsize=(7.0, 7.0))  
+ax = fig.add_subplot(111, projection='3d')  
+  
+# Plot the targets  
+ax.plot(targets[:, 0], targets[:, 1], targets[:, 2], 'o-', color='orange', label='Targets')  
+  
+# Set labels  
+ax.set_xlabel('X')  
+ax.set_ylabel('Y')  
+ax.set_zlabel('Z')  
+  
+# Add a legend  
+ax.legend()  
+  
+# Show the plot  
+plt.show()  
 <REVISED CODE END>  
   
 <CATEGORY>: [Line]  

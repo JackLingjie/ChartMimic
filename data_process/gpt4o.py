@@ -126,9 +126,9 @@ class Openai():
                 completion = client.chat.completions.create(
                     model=model,
                     messages=messages,
-                    temperature=0.0,
+                    temperature=0.7,
                     max_tokens=max_tokens,
-                    frequency_penalty=0,
+                    frequency_penalty=1,
                     presence_penalty=0,
                     stop=None
                 )
