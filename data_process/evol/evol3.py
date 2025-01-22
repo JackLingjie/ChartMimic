@@ -87,7 +87,7 @@ def main():
     os.makedirs(output_dir, exist_ok=True)  
   
     data = load_data(save_path)  
-    data = data[:5]  # 这里限制为前 5 条，您可以根据需要调整  
+    # data = data[:5]  # 这里限制为前 5 条，您可以根据需要调整  
   
     clients = [Openai(apis=[API_INFOS[i]]) for i in range(len(API_INFOS))]  
     print(f"len(clients): {len(clients)}")  
