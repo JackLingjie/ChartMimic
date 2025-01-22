@@ -2,12 +2,21 @@
   
 # 定义一个数组，包含所有需要处理的模型名称和路径  
 model_names=(  
-    "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_web2code_rick_760k_prompt_added_v2_2000"
-    "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_web2code_rick_760k_prompt_added_v2_3000"
-    "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_web2code_rick_760k_prompt_added_v2_4000"
-    "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_web2code_rick_760k_v1_2000"
-    "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_web2code_rick_760k_v1_3000"
-    "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_web2code_rick_760k_v1_4000"
+    "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_web2code_rick_revised_750k_v1_500"
+    "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_web2code_rick_revised_750k_v1_1000"
+    "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_web2code_rick_revised_750k_v1_1500"
+    "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_web2code_rick_revised_html_tag_750k_v2_500"
+    "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_web2code_rick_revised_html_tag_750k_v2_1000"
+    "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_web2code_rick_revised_html_tag_750k_v2_1500"
+    # "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_chart52k_369"
+    # "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_img_revised_80k_v1-563"
+    # "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_img_revised_html_tag_80k_v2-563"
+    # "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_web2code_rick_760k_prompt_added_v2_2000"
+    # "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_web2code_rick_760k_prompt_added_v2_3000"
+    # "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_web2code_rick_760k_prompt_added_v2_4000"
+    # "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_web2code_rick_760k_v1_2000"
+    # "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_web2code_rick_760k_v1_3000"
+    # "stage2_llm_2nodes_1e5_web2code_bsz128_1e5_web2code_rick_760k_v1_4000"
 )  
   
 # 确保日志目录存在  

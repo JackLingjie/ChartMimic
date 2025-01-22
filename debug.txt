@@ -1,98 +1,40 @@
   
-Please modify the code between <Original Code> according to the requirements, then output the REVISED CODE ,<CATEGORY>, <CHART SIZE> following the format provided at the end.
-
-<Original Code>
-import numpy as np
-from matplotlib import pyplot as plt
-
-
-
-
-COLORS = np.array([[0, 0, 0], [0, 0, 255], [255, 0, 0], [0, 255, 0]])
-W = np.power(255, [0, 1, 2])
-
-HASHES = np.sum(W * COLORS, axis=-1)
-HASH2COLOR = {h: c for h, c in zip(HASHES, COLORS)}
-HASH2IDX = {h: i for i, h in enumerate(HASHES)}
-
-
-def rgb2index(segmentation_rgb):
-    
-    s_shape = segmentation_rgb.shape
-    s_hashes = np.sum(W * segmentation_rgb, axis=-1)
-    print(np.unique(segmentation_rgb.reshape((-1, 3)), axis=0))
-    func = lambda x: HASH2IDX[int(x)]  # noqa
-    segmentation_idx = np.apply_along_axis(func, 0, s_hashes.reshape((1, -1)))
-    segmentation_idx = segmentation_idx.reshape(s_shape[:2])
-    return segmentation_idx
-
-
-segmentation = np.array([[0, 0, 0], [0, 0, 255], [255, 0, 0]] * 3).reshape((3, 3, 3))
-segmentation_idx = rgb2index(segmentation)
-print(segmentation)
-print(segmentation_idx)
-
-
-fig, axes = plt.subplots(1, 2, figsize=(6, 3))
-axes[0].imshow(segmentation)
-axes[0].set_title("Segmentation RGB")
-axes[1].imshow(segmentation_idx)
-axes[1].set_title("Segmentation IDX")
-plt.show()  
-<Original Code>
-
-# Requirements:
-1. Retain only the plotting code and necessary imports; keep only matplotlib and numpy-related libraries. Do not use os, sys, or similar libraries.  
-2. Avoid using custom functions or classes. Provide sequential code for plotting. If the original code is too complex or lacks plotting code, provide a new example using matplotlib.  
-3. Set the figure size to `figsize=(width, height)`.  
-4. Convert all text to English; do not add font settings.  
-5. If multiple plots exist, retain only one.  
-6. Use `plt.show()` to display the plot.  
-7. Remove non-English text, path information, and initial comments from the code. Ensure the output format matches the example.  
-8. Classify the resulting plot into one of the following categories: Bar, Line, ErrorBar, Heatmap, Box, Scatters, Hist, Radar, 3D, Pie, ErrorPoint, Violin, Area, Contour, Density, Graph, Quiver, Treemap, Combination, HR, Multidiff, PIP.  
-9. Output the image dimensions as `(width, height)`.   
-
-Please follow the reference output format for modification:  
-
-## Reference output format:  
+As a Matplotlib expert, your task is to optimize a Python plotting script to create a visually complex and appealing chart. The script will be used for a Matplotlib chart demonstration, so aesthetic quality is essential. You are required to generate a Line chart, tailoring all modifications to enhance this specific chart type.  
   
-<REVISED CODE BEGIN>  
+If the original code is not optimal, make necessary adjustments to improve its performance and visual appeal. Enhance the chart by adding or modifying elements such as colors, markers, and line styles, ensuring each addition is meaningful and contributes to the chart's clarity and impact.  
+  
+Based on the specified chart type and initial script, enrich the chart's narrative through elements like the title, axis labels, and legend.  
+  
+Use the Matplotlib library in Python for plotting. You can use auxiliary libraries such as Numpy, but make sure the code works! Avoid using seaborn or other plot library.
+
+Instead of using the original data, construct new, contextually appropriate data that aligns with a formal chart scenario. Use Python lists or NumPy arrays to create this data, ensuring it is explicitly crafted to suit the chart type and topic. Avoid using random() for data creation.  
+  
+Be imaginative and creative in both data selection and plotting details to produce an engaging and informative chart.  
+  
+Please provide the optimized code within a ```python``` block: 
+  
+<Original Code>
 import matplotlib.pyplot as plt  
-from mpl_toolkits.mplot3d import Axes3D  
 import numpy as np  
-  
-# Sample data  
-targets = np.array([  
-    [0.2, 0.4, 0.0],  
-    [0.3, 0.5, 0.2],  
-    [0.4, 0.6, 0.4],  
-    [0.5, 0.7, 0.6],  
-    [0.6, 0.8, 0.8],  
-    [0.7, 0.9, 1.0],  
-    [0.8, 1.0, 1.2],  
-    [0.9, 1.1, 1.4]  
-])  
-  
-# Create a new figure  
-fig = plt.figure(figsize=(7.0, 7.0))  
-ax = fig.add_subplot(111, projection='3d')  
-  
-# Plot the targets  
-ax.plot(targets[:, 0], targets[:, 1], targets[:, 2], 'o-', color='orange', label='Targets')  
-  
-# Set labels  
-ax.set_xlabel('X')  
-ax.set_ylabel('Y')  
-ax.set_zlabel('Z')  
-  
-# Add a legend  
-ax.legend()  
-  
-# Show the plot  
-plt.show()  
-<REVISED CODE END>  
-  
-<CATEGORY>: [Line]  
-<CHART SIZE>: (7.0, 7.0)  
 
-Your output:
+# Sample data  
+x = np.linspace(0, 1, 100)  
+y = x**2  
+
+# Create a new figure  
+fig = plt.figure(figsize=(6.0, 4.0))  
+
+# Plot the data  
+plt.plot(x, y, label='y = x^2')  
+
+# Set labels  
+plt.xlabel('X')  
+plt.ylabel('Y')  
+
+# Add a legend  
+plt.legend()  
+
+# Show the plot  
+plt.show()
+<Original Code> 
+

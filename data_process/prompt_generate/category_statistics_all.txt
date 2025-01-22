@@ -1,0 +1,25 @@
+Category Counts:
+Line: 58848
+Heatmap: 1840
+Quiver: 240
+Scatters: 4456
+3D: 1335
+Bar: 4907
+Pie: 786
+Box: 210
+Contour: 700
+Combination: 353
+ErrorBar: 644
+Graph: 530
+Hist: 367
+Area: 195
+Radar: 55
+Violin: 47
+Density: 31
+Treemap: 8
+ErrorPoint: 15
+Multidiff: 2
+
+Categories not in data:
+HR
+PIP

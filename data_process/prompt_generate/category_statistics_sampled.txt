@@ -1,0 +1,27 @@
+Category Counts:
+Quiver: 760
+Pie: 214
+Box: 790
+Contour: 300
+Combination: 647
+ErrorBar: 356
+Graph: 470
+Hist: 633
+Area: 805
+Radar: 945
+Violin: 953
+Density: 969
+Treemap: 984
+ErrorPoint: 985
+Multidiff: 989
+HardRecognize: 997
+Plot_In_Plot: 996
+
+Categories not in data:
+Bar
+Line
+Heatmap
+Scatters
+3D
+HR
+PIP

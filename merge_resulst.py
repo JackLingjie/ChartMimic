@@ -95,14 +95,15 @@ def process_model_results(model):
     # 处理第二个文件集  
     file = os.path.join(project_path, "results", f"gpt4evaluation_{model}_GPT4EvaluationAgent_direct_results.json")  
     
-    # extract gpt4v score
-    process_jsonl_file(file)
+
     if not os.path.exists(file):  
         print(f"File not found: {file}")  
         results["GPT4VScore"] = 0  
         results["Overall"] = 0  
         return results 
-      
+    # extract gpt4v score
+    process_jsonl_file(file)
+       
     with open(file, 'r') as f:  
         data = [json.loads(line) for line in f]  
       

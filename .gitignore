@@ -25,3 +25,4 @@ ourdata_revise/
 *.json[0-9]*  
 *.zip
 ourdata_revise_empty/
+data_process/prompt_generate/img*
