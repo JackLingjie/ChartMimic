@@ -50,7 +50,7 @@ def process_row(index, client, item, prompt_template, max_tokens=2048):
     # category = item.get('category', 'pie')  
     image_path = item.get('images', [])[0]
     # image_path = item["images"]
-    print(f"image_path: {image_path}")
+    # print(f"image_path: {image_path}")
     if not image_path:  
         print(f"No image path found for index {index}. Skipping.")  
         return None  

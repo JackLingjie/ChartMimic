@@ -50,7 +50,7 @@ def process_row(index, client, item, prompt_template, max_tokens=2048):
     # category = item.get('category', 'pie')  
     image_path = item.get('images', [])[0]
     # image_path = item["images"]
-    print(f"image_path: {image_path}")
+    # print(f"image_path: {image_path}")
     if not image_path:  
         print(f"No image path found for index {index}. Skipping.")  
         return None  
@@ -82,7 +82,7 @@ def main():
     os.makedirs(output_dir, exist_ok=True)  
     print(f"save_path: {save_path}")
     print(f"output_dir: {output_dir}")
-      
+
     data = load_data(save_path)  
     # data = data[:2]  # 这里限制为前 5 条，您可以根据需要调整
     
