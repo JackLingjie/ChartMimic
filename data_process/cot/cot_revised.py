@@ -78,7 +78,9 @@ def main():
     # save_path = "/mnt/lingjiejiang/multimodal_code/data/chart_data/evol_data_filter_images_40k_sharegpt_format.json"   
     save_path = f"/mnt/lingjiejiang/multimodal_code/data/chart_data/evol_data_filter_images_40k_split_{MACHINE_ID}.json"  
     output_dir = f'/mnt/lingjiejiang/multimodal_code/data/chart_data/chart_code_cot_{MACHINE_ID}'  
-    # output_dir = "data_process/tests"
+    
+    print(f"save_path: {save_path}")
+    print(f"output_dir: {output_dir}")
     os.makedirs(output_dir, exist_ok=True)  
   
     data = load_data(save_path)  

@@ -80,7 +80,9 @@ def main():
     output_dir = f'/mnt/lingjiejiang/multimodal_code/data/chart_data/chart_code_cot_{MACHINE_ID}'  
     # output_dir = "data_process/tests"
     os.makedirs(output_dir, exist_ok=True)  
-  
+    print(f"save_path: {save_path}")
+    print(f"output_dir: {output_dir}")
+      
     data = load_data(save_path)  
     # data = data[:2]  # 这里限制为前 5 条，您可以根据需要调整
     
