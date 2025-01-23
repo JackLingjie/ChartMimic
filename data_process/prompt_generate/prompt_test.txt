@@ -1,0 +1,21 @@
+I need your help to generate the Python code that can reproduce the picture based on the picture I provide.\nNote that it is necessary to use figsize=({width}, {height}) to set the image size to match the original size.\nNow, please give me the matplotlib code that reproduces the picture below. Give your think process about the chart element such as the text, label, chart type layout, color firstly. Then give the matplotlib code in the end.
+
+TextScore	LayoutScore	TypeScore	ColorScore
+
+
+
+prompt_template = """  
+I need your assistance in generating Python code using matplotlib that can accurately reproduce the provided image. Please ensure the following:  
+1. Before generating the code, analyze the chart elements such as text, labels, datas, chart type, layout, and colors. Provide a brief explanation of your thought process for each element.  
+ 
+2. After the analysis, provide the complete matplotlib code. Use `figsize=({width}, {height})` to set the image size so that it matches the original dimensions. Present the final code within a ```python``` block.
+
+
+Please ensure that the code is well-commented, explaining each step and configuration.  
+"""  
+
+prompt_template = """  
+I need your assistance in generating Python code using matplotlib that can accurately reproduce the provided image. Please ensure the following:  
+1. Before generating the code, analyze the chart elements such as text, labels, datas, chart type, layout, and colors. Provide a brief explanation of your thought process for each element.  
+ 
+2. After the analysis, provide the complete matplotlib code. Use `figsize=({10}, {5})` to set the image size so that it matches the original dimensions. Present the final code within a ```python``` block.

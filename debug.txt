@@ -1,34 +1,4 @@
   
-As a MatplotLib expert, you are asked to write a new Python plotting script to create a visually complex and appealing chart. The script will be used for a Matplotlib chart demonstration, so aesthetic quality is essential. You are required to generate a Treemap chart.
-There is one original script from which you can draw inspiration, but try not to repeat patterns already shown in the examples to maximize diversity.
-The topic of the chart can be anything you like. Instead of using the original data, title and labels, construct new, contextually appropriate data that aligns with a formal chart scenario. 
-Use Python lists or NumPy arrays to create this data, ensuring it is explicitly crafted to suit the chart type and topic. Avoid using random() for data creation.  
-Enhance the chart by adding or modifying elements such as colors, markers, and line styles, ensuring each addition is meaningful and contributes to the chart's clarity and impact.  
-Based on the specified chart type and initial script, enrich the chart's narrative through elements like the title, axis labels, and legend.  
-Use the Matplotlib library in Python for plotting. You can use auxiliary libraries such as Numpy, but make sure the code works! Avoid using seaborn or other plot library.
-Be imaginative and creative in both data selection and plotting details to produce an engaging and informative chart.  
-  
-Please provide the optimized code within a ```python``` block: 
-  
-<Original Code>
-import matplotlib.pyplot as plt  
-import squarify  # Squarify is a library for treemap plotting  
-import numpy as np  
-  
-# Define the data: Market shares of various companies  
-company_names = ["Company A", "Company B", "Company C", "Company D", "Company E", "Company F"]  
-market_shares = [30, 25, 20, 15, 7, 3]  # Market share percentages  
-  
-# Define colors for the treemap  
-colors = plt.cm.viridis(np.linspace(0, 1, len(company_names)))  
-  
-# Create the treemap  
-plt.figure(figsize=(12, 8))  
-squarify.plot(sizes=market_shares, label=company_names, color=colors, alpha=.8)  
-  
-# Customize the plot  
-plt.title("Market Share of Tech Companies")  
-plt.axis('off')  # Turn off the axis  
-plt.show()
-<Original Code> 
-
+I need your assistance in generating Python code using matplotlib that can accurately reproduce the provided image. Please ensure the following:  
+1. Before generating the code, analyze the chart elements such as text, labels, datas, chart type, layout, and colors. Provide a brief explanation of your thought process for each element.  
+2. After the analysis, provide the complete matplotlib code. Use `figsize=(10, 6)` to set the image size so that it matches the original dimensions. Present the final code within a ```python``` block.
