@@ -29,3 +29,4 @@ data_process/prompt_generate/img*
 data_process/tests/
 data_process/revised_code/
 data_process/evol_code/
+tests

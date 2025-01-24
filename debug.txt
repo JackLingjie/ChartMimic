@@ -1,4 +1,1 @@
-  
-I need your assistance in generating Python code using matplotlib that can accurately reproduce the provided image. Please ensure the following:  
-1. Before generating the code, analyze the chart elements such as text, labels, datas, chart type, layout, and colors. Provide a brief explanation of your thought process for each element.  
-2. After the analysis, provide the complete matplotlib code. Use `figsize=(10, 6)` to set the image size so that it matches the original dimensions. Present the final code within a ```python``` block.
+Can you create matplotlib code that replicates the given image, ensuring the dimensions are set with figsize=(width, height)? Pay attention to every visual cue, such as axis formatting, color schemes, and title fonts.

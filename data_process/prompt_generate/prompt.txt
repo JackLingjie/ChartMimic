@@ -17,21 +17,41 @@ Note:
 
 
 
+Here are some instructions that are being fed to a generative AI model as instruction tuning during the training of a Vision language model. The instruction is to generate the same matplotlib chart python code to mimic the chart provided. You need to provide more instructions.
+  
+"You are an expert Python developer who specializes in writing matplotlib code based on a given picture. I found a very nice picture in a STEM paper, but there is no corresponding source code available. I need your help to generate the Python code that can reproduce the picture based on the picture I provide.\nNote that it is necessary to use figsize=(width, height) to set the image size to match the original size.\nNow, please give me the matplotlib code that reproduces the picture below.",
+"As a seasoned Python coder, your task is to analyze the image provided and craft the equivalent matplotlib code to replicate it. Ensure the dimensions are set with figsize=(width, height)."
+"Can you demonstrate how to recreate a chart from an image using Python's matplotlib, ensuring the dimensions are set precisely with figsize=(width, height)? Consider all elements such as grid lines, markers, and annotations in your code."
+"Can you create a matplotlib script that reproduces a given image using Python, with the dimensions set by figsize=(width, height)? Consider all visual components such as color schemes, text alignment, and data representation in your code."
+"As a proficient Python developer, your objective is to examine the provided image and develop corresponding matplotlib code to replicate it accurately. Ensure that you utilize figsize=(width, height) to match the original dimensions. Pay attention to every detail, including axes labels, legend placement, and font sizes. Make sure to capture the essence of the image through precise color choices and data representation. Can you help recreate this plot with these specifications?"
+"Craft a piece of matplotlib code that duplicates the image, and adjust the size using figsize=(width, height)."
+"Formulate a matplotlib script that duplicates the diagram from the image. Remember to use figsize=(width, height) for the correct dimensions."
 
+Note: 
+1.Try not to repeat the verb for each instruction to maximize diversity. 
+2.The languages used for the instruction should be diverse. 
+3.The instructions should be in English. 
+4.The instruction should require use use the Matplotlib library in Python for plotting.
+5.The instructions should be at least 3 to 7 sentences long. Either an imperative sentence or a question is permitted.
+6.Instructions should be clear and precise. 
+7.Please provide 20 examples.
+
+2.The languages used for the instruction should be diverse. For example, you should combine questions with imperative instructions. 
 Here are some instructions that are being fed to a generative AI model as instruction tuning during the training of a Vision language model.  
   
-"You are an expert Python developer who specializes in writing matplotlib code based on a given picture. I found a very nice picture in a STEM paper, but there is no corresponding source code available. I need your help to generate the Python code that can reproduce the picture based on the picture I provide.\nNote that it is necessary to use figsize=({width}, {height}) to set the image size to match the original size.\nNow, please give me the matplotlib code that reproduces the picture below.",
+"You are an expert Python developer who specializes in writing matplotlib code based on a given picture. I found a very nice picture in a STEM paper, but there is no corresponding source code available. I need your help to generate the Python code that can reproduce the picture based on the picture I provide.\nNote that it is necessary to use figsize=(width, height) to set the image size to match the original size.\nNow, please give me the matplotlib code that reproduces the picture below.",
+"As a seasoned Python coder, your task is to analyze the image provided and craft the equivalent matplotlib code to replicate it. Ensure the dimensions are set with figsize=(width, height)."
 
 Note: 
 1.Try not to repeat the verb for each instruction to maximize diversity. 
 2.The languages used for the instruction should be diverse. For example, you should combine questions with imperative instructions. 
 3.The instructions should be in English. 
-4.The instructions should be at least 1 to 4 sentences long. Either an imperative sentence or a question is permitted.
+4.The instructions should be at least 2 to 5 sentences long. Either an imperative sentence or a question is permitted.
 5.Instructions should be clear and precise. 
 6.Please provide 20 examples.
 
 
-每个指令都应该有对图像尺寸figsize=({width}, {height})要求的提示
+
 
 6.Each should be 
 
