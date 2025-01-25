@@ -154,7 +154,51 @@ class Openai():
                 print(e)
                 cur_retry += 1
         return "", ""      
-    
+
+    def get_image_response_v2_text(self, content, system="You are a helpful assistant.", max_tokens=2048, client_index = None):
+
+        # def encode_image(image_path):
+        #     with open(image_path, "rb") as image_file:
+        #         return base64.b64encode(image_file.read()).decode('utf-8')   
+                 
+        # base64_image = encode_image(image)      
+        messages = [
+            {"role": "system", "content": f"{system}"},
+            {"role": "user", "content": [
+                {"type": "text", "text": f"{content}\n"},
+            ]
+             },
+        ]
+
+
+        client = self.client
+        model = self.model
+
+        max_retry = 5
+        cur_retry = 0
+        while cur_retry <= max_retry:
+            try:
+                completion = client.chat.completions.create(
+                    model=model,
+                    messages=messages,
+                    temperature=0.7,
+                    max_tokens=max_tokens,
+                    frequency_penalty=0,
+                    presence_penalty=0,
+                    stop=None
+                )
+
+                # client.chat.completions.with_raw_response
+                results = completion.choices[0].message.content
+                stop_reason = completion.choices[0].finish_reason
+                return results, stop_reason
+            except openai.RateLimitError as e:
+                time.sleep(1)
+            except Exception as e:
+                print(e)
+                cur_retry += 1
+        return "", ""   
+        
     def get_response(self, content, system="You are a helpful assistant.", max_tokens=2048, client_index = None):
         messages = [
             {"role": "system", "content": f"{system}"},
