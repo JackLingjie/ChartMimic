@@ -70,7 +70,7 @@ def main():
     # save_path = "/mnt/lingjiejiang/multimodal_code/data/chart_data/evol_data_filter_images_40k_sharegpt_format.json"   
     save_path = f"/mnt/lingjiejiang/multimodal_code/data/dpo/html/web100k_split{MACHINE_ID}.json"  
     output_dir = f'/mnt/lingjiejiang/multimodal_code/data/dpo/html/generate{MACHINE_ID}'  
-    output_dir = "tests/"
+    # output_dir = "tests/"
     print(f"save_path: {save_path}")
     print(f"output_dir: {output_dir}")
     os.makedirs(output_dir, exist_ok=True)  
