@@ -15,7 +15,7 @@ class VllmModel:
             model=model_path,  
             trust_remote_code=True,
             limit_mm_per_prompt={"image": max_image},  
-            tensor_parallel_size=4
+            tensor_parallel_size=8
         )  
         self.tokenizer = self.llm.get_tokenizer()  
         self.model_path = model_path  
@@ -147,7 +147,7 @@ class VllmModel:
         # return generated_text 
         return outputs
     
-    def generate(self, messages, temperature=0.9, max_tokens=2048, top_p=0.95, repetition_penalty=1.05):  
+    def generate(self, messages, temperature=0.7, max_tokens=2048, top_p=0.95, repetition_penalty=1.05):  
         
         sampling_params = SamplingParams(  
             temperature=temperature,  
