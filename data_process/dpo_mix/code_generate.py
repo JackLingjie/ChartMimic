@@ -71,13 +71,13 @@ def main():
     # save_path = "/mnt/lingjiejiang/multimodal_code/data/chart_data/evol_data_filter_images_40k_sharegpt_format.json"   
     save_path = "/mnt/lingjiejiang/multimodal_code/data/dpo/code/code_95k.json"
     output_dir = f'/mnt/lingjiejiang/multimodal_code/data/dpo/code/generate{MACHINE_ID}'  
-    output_dir = "tests/"
+    # output_dir = "tests/"
     print(f"save_path: {save_path}")
     print(f"output_dir: {output_dir}")
     os.makedirs(output_dir, exist_ok=True)  
   
     data = load_data(save_path)  
-    data = data[:2]  # 这里限制为前 5 条，您可以根据需要调整
+    # data = data[:2]  # 这里限制为前 5 条，您可以根据需要调整
     
     clients = [Openai(apis=[API_INFOS[i]]) for i in range(len(API_INFOS))]  
     print(f"len(clients): {len(clients)}")  
