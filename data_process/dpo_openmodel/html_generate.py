@@ -127,7 +127,7 @@ def main():
     # 每次处理批量数据时的逻辑
     batch_size = 1280
     revised_data = []
-    for i in range(0, len(data), batch_size):
+    for i in tqdm(range(0, len(data), batch_size), desc="Processing Batches", unit="batch"):
         batch_data = data[i:i + batch_size]
         
         # 批量处理
