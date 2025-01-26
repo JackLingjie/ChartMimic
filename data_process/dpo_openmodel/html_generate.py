@@ -5,7 +5,7 @@ from tqdm import tqdm
 import base64
 from PIL import Image
 import re
-from vllm_qwen.VllmModel import VllmModel
+from vllm_qwen import VllmModel
 
 MACHINE_ID = 1
 
@@ -30,7 +30,7 @@ def construct_prompt(image_path, instruction):
                     "type": "image",
                     "image": img,
                     "min_pixels": 224 * 224,
-                    "max_pixels": 1280 * 28 * 28,
+                    "max_pixels": 4259840,
                 },
                 {
                     "type": "text", 
@@ -41,10 +41,19 @@ def construct_prompt(image_path, instruction):
     ]
     return messages
 
-def extract_python_code(gpt_answer):
-    # 提取 HTML 代码
+def extract_code(gpt_answer):
+    # 首先尝试提取 HTML 代码
     match = re.search(r"```html(.*?)```", gpt_answer, re.DOTALL)
-    return match.group(1).strip() if match else ""
+    if match:
+        return match.group(1).strip()
+    
+    # 如果没有 HTML，尝试提取 Python 代码
+    match = re.search(r"```python(.*?)```", gpt_answer, re.DOTALL)
+    if match:
+        return match.group(1).strip()
+    
+    # 如果都没有提取到代码，返回空字符串
+    return ""
 
 def batch_generate(client, prompts, max_tokens=2048):
     try:
@@ -77,7 +86,7 @@ def process_batch(client, batch_data, max_tokens=2048, model_name="qwen"):
     results = []
     for idx, (response, stop_reason) in enumerate(zip(responses, stop_reasons)):
         # 提取evol_text（假设是HTML代码提取）
-        evol_text = extract_python_code(response)
+        evol_text = extract_code(response)
         
         # 更新item
         item = batch_data[idx]
@@ -102,13 +111,15 @@ def main():
     model_path = args.model_path
     
     # 定义文件路径
-    save_path = f"/mnt/lingjiejiang/multimodal_code/data/dpo/html/web100k.json"
-    output_dir = f'/mnt/lingjiejiang/multimodal_code/data/dpo/html/{model_name}_generate'
+    # save_path = f"/mnt/lingjiejiang/multimodal_code/data/dpo/html/web100k.json"
+    save_path = "/mnt/lingjiejiang/multimodal_code/data/dpo/merged_html_chart_150k.json"
+    output_dir = f'/mnt/lingjiejiang/multimodal_code/data/dpo/{model_name}_generate'
     os.makedirs(output_dir, exist_ok=True)
     
     # 加载数据
     data = load_data(save_path)
-    
+    # data = data[:2]
+    # output_dir = "tests/"
     # 初始化VllmModel客户端
     client = VllmModel(model_path=model_path)
     print(f"Using model: {model_name}")

@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0,1,2,3  python data_process/dpo_openmodel/html_generate.py --model_name Qwen2-VL-72B-Instruct --model_path /mnt/lingjiejiang/multimodal_code/checkpoints/llms/Qwen2-VL-72B-Instruct
