@@ -1,1 +1,2 @@
 python data_process/dpo_openmodel/code_generate_large.py --model_name Qwen2.5-Coder-32B-Instruct --model_path "/mnt/lingjiejiang/multimodal_code/checkpoints/llms/Qwen2.5-Coder-32B-Instruct" --batch_size 256 --start_index 0 --end_index 95251
+python run_gpu.py
