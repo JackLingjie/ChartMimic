@@ -120,7 +120,7 @@ def main():
     
     batch_size = 8
     revised_data = []
-    for i in tqdm(range(0, len(data), batch_size), desc="Processing Batches", unit="batch"):
+    for i in tqdm(range(0, len(data), batch_size), desc=f"Processing Batches {start_index}:{end_index}", unit="batch"):
         batch_data = data[i:i + batch_size]
         
         batch_results = process_batch(client, batch_data, model_name=model_name)
