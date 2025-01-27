@@ -5,7 +5,7 @@ from tqdm import tqdm
 import base64
 from PIL import Image
 import re
-from vllm_qwen import VllmModel
+from vllm_qwen_7b import VllmModel
 
 MACHINE_ID = 1
 
@@ -114,7 +114,7 @@ def main():
         end_index = len(data)
 
     print(f"Processing data from index {start_index} to {end_index}")
-    data = data[start_index:end_index]
+    # data = data[start_index:end_index]
 
     client = VllmModel(model_path=model_path)
     print(f"Using model: {model_name}")
