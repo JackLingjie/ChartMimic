@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0 python data_process/dpo_openmodel/code_generate.py --model_name Meta-Llama-3.1-8B-Instruct --model_path "/mnt/lingjiejiang/textual_aesthetics/model_checkpoint/sft_merge_checkpoints/Meta-Llama-3.1-8B-Instruct" --batch_size 256 --start_index 0 --end_index 95251
