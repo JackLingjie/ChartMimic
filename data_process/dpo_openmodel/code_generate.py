@@ -5,7 +5,7 @@ from tqdm import tqdm
 import base64
 from PIL import Image
 import re
-from vllm_qwen import VllmModel
+from text_vllm import VllmModel
 
 MACHINE_ID = 1
 
