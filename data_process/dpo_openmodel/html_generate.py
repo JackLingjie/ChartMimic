@@ -125,7 +125,7 @@ def main():
     print(f"Using model: {model_name}")
     
     # 每次处理批量数据时的逻辑
-    batch_size = 4
+    batch_size = 8
     revised_data = []
     for i in tqdm(range(0, len(data), batch_size), desc="Processing Batches", unit="batch"):
         batch_data = data[i:i + batch_size]
