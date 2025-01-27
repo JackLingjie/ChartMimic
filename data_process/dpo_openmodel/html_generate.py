@@ -118,7 +118,7 @@ def main():
     client = VllmModel(model_path=model_path)
     print(f"Using model: {model_name}")
     
-    batch_size = 8
+    batch_size = 4
     revised_data = []
     for i in tqdm(range(0, len(data), batch_size), desc=f"Processing Batches {start_index}:{end_index}", unit="batch"):
         batch_data = data[i:i + batch_size]
