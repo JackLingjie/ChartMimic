@@ -27,7 +27,7 @@ git checkout -b dev origin/dev
 pip install -r requirements.txt
 pip install --user vllm==0.6.4
 pip install -U flash-attn==2.7.2.post1 --no-build-isolation
-pip install qwen_vl_utils
+pip install qwen_vl_utils==0.0.8
 EOF
 )
 
