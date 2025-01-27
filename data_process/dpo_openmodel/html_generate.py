@@ -30,7 +30,7 @@ def construct_prompt(image_path, instruction):
                     "type": "image",
                     "image": img,
                     "min_pixels": 224 * 224,
-                    "max_pixels": 1280 * 28 * 28,
+                    "max_pixels": 2560 * 1440,
                 },
                 {
                     "type": "text", 
