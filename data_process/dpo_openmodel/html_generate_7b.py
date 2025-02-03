@@ -5,7 +5,7 @@ from tqdm import tqdm
 import base64
 from PIL import Image
 import re
-from vllm_qwen_7b import VllmModel
+from vllm_qwen_7b_tp2 import VllmModel
 
 MACHINE_ID = 1
 
@@ -96,6 +96,7 @@ def main():
     parser.add_argument('--start_index', type=int, default=0, help='Start index for processing')
     parser.add_argument('--end_index', type=int, default=-1, help='End index for processing')
     parser.add_argument('--batch_size', type=int, default=4, help='End index for processing')
+    parser.add_argument('--output_dir', type=str, default='/mnt/lingjiejiang/multimodal_code/data/dpo/Qwen2-VL-7B-Instruct_generate_chartbench46k', help='The name of the model to use')
         
     args = parser.parse_args()
     
@@ -105,7 +106,7 @@ def main():
     end_index = args.end_index
 
     save_path = "/mnt/lingjiejiang/multimodal_code/data/dpo/merged_html_chart_150k.json"
-    output_dir = f'/mnt/lingjiejiang/multimodal_code/data/dpo/{model_name}_generate'
+    output_dir = args.output_dir
     os.makedirs(output_dir, exist_ok=True)
     
     data = load_data(save_path)
