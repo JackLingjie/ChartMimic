@@ -102,8 +102,14 @@ def process_model_results(model):
         results["Overall"] = 0  
         return results 
     # extract gpt4v score
-    process_jsonl_file(file)
-       
+    try:
+        process_jsonl_file(file)
+    except Exception as e:
+        print(f"Error processing file: {file}")
+        results["GPT4VScore"] = 0  
+        results["Overall"] = 0  
+        return results         
+
     with open(file, 'r') as f:  
         data = [json.loads(line) for line in f]  
       
