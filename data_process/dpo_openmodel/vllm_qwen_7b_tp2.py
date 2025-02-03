@@ -15,7 +15,8 @@ class VllmModel:
             model=model_path,  
             trust_remote_code=True,
             limit_mm_per_prompt={"image": max_image},  
-            tensor_parallel_size=2
+            tensor_parallel_size=2,
+            gpu_memory_utilization=0.7
         )  
         self.tokenizer = self.llm.get_tokenizer()  
         self.model_path = model_path  
